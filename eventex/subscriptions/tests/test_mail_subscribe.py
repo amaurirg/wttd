@@ -14,22 +14,18 @@ class SubscribePostValid(TestCase):
         self.email = mail.outbox[0]
 
     def test_subscription_email_subject(self):
-        """"""
         expected = 'Confirmação de inscrição'
         self.assertEqual(expected, self.email.subject)
 
     def test_subscription_email_from(self):
-        """"""
         expected = 'amauritestdev@gmail.com'
         self.assertEqual(expected, self.email.from_email)
 
     def test_subscription_email_to(self):
-        """"""
         expected = ['amauritestdev@gmail.com' ]
         self.assertEqual(expected, self.email.to)
 
     def test_subscription_email_body(self):
-        """"""
         contents = [
             'Amauri',
             '12345678901',
