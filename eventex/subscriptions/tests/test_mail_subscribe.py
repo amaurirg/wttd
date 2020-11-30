@@ -7,7 +7,7 @@ class SubscribePostValid(TestCase):
         data = {
             'name': 'Amauri',
             'cpf': '12345678901',
-            'email': 'amauritestdev@gmail.com',
+            'email': 'contato@eventex.com.br',
             'phone': '11-99999-8888'
         }
         self.resp = self.client.post('/inscricao/', data)
@@ -18,18 +18,18 @@ class SubscribePostValid(TestCase):
         self.assertEqual(expected, self.email.subject)
 
     def test_subscription_email_from(self):
-        expected = 'amauritestdev@gmail.com'
+        expected = 'contato@eventex.com.br'
         self.assertEqual(expected, self.email.from_email)
 
     def test_subscription_email_to(self):
-        expected = ['amauritestdev@gmail.com' ]
+        expected = ['contato@eventex.com.br' ]
         self.assertEqual(expected, self.email.to)
 
     def test_subscription_email_body(self):
         contents = [
             'Amauri',
             '12345678901',
-            'amauritestdev@gmail.com',
+            'contato@eventex.com.br',
             '11-99999-8888'
         ]
         for content in contents:
