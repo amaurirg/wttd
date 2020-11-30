@@ -2,6 +2,8 @@
 
 Sistema de Eventos
 
+[![Build Status](https://travis-ci.org/amaurirg/wttd.svg?branch=main)](https://travis-ci.org/amaurirg/wttd)
+
 ## Como desenvolver?
 
 1. Clone o repositório
