@@ -35,24 +35,7 @@
 	<body>
 
         <div class="header-frame header-frame-absolute  row">
-            <header class="header header-inline min-h-3 row desktop-12 container" role="banner">
-
-                <div class="site-logo">
-                    <h1><a href="{% url 'home' %}" rel="home">Eventex</a></h1>
-                    <p class="site-description screen-reader-only">O maior encontro hacker do mundo!</p>
-                </div>
-
-                <nav class="nav-inline" role="navigation">
-                    <a href="javascript:void(0);" class="nav-mobile"><i class="fa fa-bars"></i></a>
-                    <ul>
-                        <li><a data-scroll href="#overview">Conferência</a></li>
-                        <li><a data-scroll href="#sponsors">Patrocinadores</a></li>
-                        <li><a data-scroll href="#register">Inscrição</a></li>
-                        <li><a data-scroll href="#venue">Local</a></li>
-                    </ul>
-                </nav>
-
-            </header>
+          {% include 'nav.html' only %}
         </div>
 
       	<!-- TOP -->
@@ -61,6 +44,20 @@
             	<h1 class="uppercase">Eventex</h1>
                 <h3>Brasil</h3>
             </div>
+        </section>
+
+        <section id="speakers">
+          <div class="speakers text-align-center row desktop-8 padding-bottom-2 container">
+            <h2>Palestrantes Convidados</h2>
+            <div class="desktop-4">
+              <img src="http://hbn.link/hopper-pic" alt="">
+              <h4>Grace Hopper</h4>
+            </div>
+            <div class="desktop-4">
+              <img src="http://hbn.link/turing-pic" alt="">
+              <h4>Alan Turing</h4>
+            </div>
+          </div>
         </section>
 
         <!-- OVERVIEW -->
