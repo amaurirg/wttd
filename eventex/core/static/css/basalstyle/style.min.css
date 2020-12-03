@@ -667,7 +667,7 @@ header, menu, nav, article, section, aside, details, figcaption, figure, footer 
 /* Erros nos formulários */
 .errorlist { color: #e74c3c; }
 
-.errorlist p, .errorlist li, .errorlist dt, .errorlist dd { font-size: 1.4em; line-height: 30px; padding-top: 0; padding-bottom: 0; margin-bottom: 0; }
+.errorlist p, .errorlist li, .errorlist dt, .errorlist dd { font-size: 1.4em; line-height: 30px; padding-top: 0; padding-bottom: 0; margin-bottom: 0; list-style-type: none;}
 
 .errorlist li + li, .errorlist dd + dd { line-height: 20px; padding-bottom: 10px; margin: 0; }
 
