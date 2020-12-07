@@ -1,10 +1,7 @@
 from unittest.mock import Mock
-
 from django.test import TestCase
-
-from eventex.core.admin import ContactInLine
-from eventex.core.models import Contact
 from eventex.subscriptions.admin import Subscription, SubscriptionModelAdmin, admin
+
 
 class SubscriptionModelAdminTest(TestCase):
     def setUp(self):
@@ -32,14 +29,3 @@ class SubscriptionModelAdminTest(TestCase):
         self.model_admin.mark_as_paid(None, queryset)
         SubscriptionModelAdmin.message_user = old_message_user
         return mock
-
-
-class ContactInLineAdminTest(TestCase):
-    def test_ContactInLine_fields(self):
-        contents = (
-            (Contact, ContactInLine.model),
-            (1, ContactInLine.extra)
-        )
-        for expected, field in contents:
-            with self.subTest():
-                self.assertEqual(expected, field)
