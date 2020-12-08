@@ -13,11 +13,3 @@ class ContactInLineAdminTest(TestCase):
         for expected, field in contents:
             with self.subTest():
                 self.assertEqual(expected, field)
-
-
-# class TalkListAdminTest(TestCase):
-#     def test_exists_TalkListAdmin(self):
-#         self.assertTrue(Talk)
-#
-#     def test_TalkListAdmin_fields(self):
-#         pass
