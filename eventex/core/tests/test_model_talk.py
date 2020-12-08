@@ -1,4 +1,6 @@
 from django.test import TestCase
+
+from eventex.core.managers import PeriodManager
 from eventex.core.models import Talk
 
 
@@ -52,20 +54,25 @@ class TalkModelTest(TestCase):
             with self.subTest():
                 self.assertTrue(Talk._meta.get_field(field).blank)
 
-    #
-    # def test_description_blank(self):
-    #     field = Talk._meta.get_field('description')
-    #     self.assertTrue(field.blank)
-    #
-    # def test_speakers_blank(self):
-    #     field = Talk._meta.get_field('speakers')
-    #     self.assertTrue(field.blank)
-    #
-    # def test_start_blank(self):
-    #     field = Talk._meta.get_field('start')
-    #     self.assertTrue(field.blank)
-
     def test_start_null(self):
         field = Talk._meta.get_field('start')
         self.assertTrue(field.null)
 
+
+class PeriodManagerTest(TestCase):
+    def setUp(self):
+        Talk.objects.create(title='Morning Talk', start='11:59')
+        Talk.objects.create(title='Afternoon Talk', start='12:00')
+
+    def test_manager(self):
+        self.assertIsInstance(Talk.objects, PeriodManager)
+
+    def test_at_morning(self):
+        qs = Talk.objects.at_morning()
+        expected = ['Morning Talk']
+        self.assertQuerysetEqual(qs, expected, lambda o: o.title)
+
+    def test_at_afternoon(self):
+        qs = Talk.objects.at_afternoon()
+        expected = ['Afternoon Talk']
+        self.assertQuerysetEqual(qs, expected, lambda o: o.title)

@@ -1,7 +1,5 @@
 from django.core.exceptions import ValidationError
 from django.test import TestCase
-
-from eventex.core.admin import ContactInLine
 from eventex.core.models import Speaker, Contact
 
 
@@ -56,3 +54,25 @@ class ContactModelTest(TestCase):
             value='amauri@gmail.com',
         )
         self.assertEqual('amauri@gmail.com', str(contact))
+
+
+class ContactManagerTest(TestCase):
+    def setUp(self):
+        s = Speaker.objects.create(
+            name='Amauri Rossetti',
+            slug='amauri-rossetti',
+            photo='../static/img/amauri.jpg',
+        )
+
+        s.contact_set.create(kind=Contact.EMAIL, value='amauri@gmail.com')
+        s.contact_set.create(kind=Contact.PHONE, value='11-99999-8888')
+
+    def test_emails(self):
+        qs = Contact.objects.emails()
+        expected = ['amauri@gmail.com']
+        self.assertQuerysetEqual(qs, expected, lambda o: o.value)
+
+    def test_phones(self):
+        qs = Contact.objects.phones()
+        expected = ['11-99999-8888']
+        self.assertQuerysetEqual(qs, expected, lambda o: o.value)
