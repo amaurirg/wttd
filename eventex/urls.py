@@ -15,8 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from eventex.core.views import home, speaker_detail, talk_list
-
+from eventex.core.views import speaker_detail, talk_list, home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
